@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --accent: #00bfa6;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(0, 191, 166, 0.3) 0%, transparent 55%),
+    radial-gradient(circle at bottom right, rgba(0, 191, 166, 0.2) 0%, transparent 50%), #0f1117;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 191, 166, 0.7);
+  border-radius: 9999px;
+}
+
+.section-container {
+  @apply relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 backdrop-blur-md shadow-glow;
+}
+
+.section-accent-ring {
+  @apply absolute inset-0 rounded-3xl border border-white/10;
+}
+
+.fade-in-up {
+  @apply translate-y-6 opacity-0 motion-safe:animate-[fade-in-up_0.8s_ease-out_forwards];
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.code-surface {
+  position: relative;
+}
+
+.code-surface::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 90deg at 50% 50%, rgba(0, 191, 166, 0.35), transparent 60%, rgba(0, 191, 166, 0.4));
+  filter: blur(60px);
+  animation: rotate-glow 12s linear infinite;
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.code-line {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}
+
+.code-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: rgba(0, 191, 166, 0.4);
+  box-shadow: 0 0 0.8rem rgba(0, 191, 166, 0.6);
+}
